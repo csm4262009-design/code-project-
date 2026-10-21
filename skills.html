@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0b1020;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: #69b1ff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #69b1ff;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .card {
+            background: #141b30;
+            border: 1px solid #233050;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #69b1ff;
+            transform: translateY(-3px);
+        }
+
+        .card h2 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-bar {
+            background: #202b48;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4d90fe, #69b1ff);
+            border-radius: 5px;
+            transition: width 0.6s ease;
+        }
+
+        .sports-card {
+            background: linear-gradient(135deg, #141b30, #1a2750);
+            border: 2px solid #4d90fe;
+        }
+
+        .sports-badge {
+            display: inline-block;
+            background: #4d90fe;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card p {
+            color: #9fb0d0;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="untitled 2.html" class="back-btn">← Back to Home</a>
+
+        <h1>⚡ My Skills</h1>
+
+        <!-- Sports Skill -->
+        <div class="card sports-card">
+            <h2>🏆 Sports & Athletics</h2>
+            <p>Discipline, agility, stamina, and teamwork — sports have taught me that hard work always pays off.</p>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 70%;"></div>
+            </div>
+            <p style="text-align: right; margin-top: 5px; color: #69b1ff; font-weight: bold;">Expert Level</p>
+            <span class="sports-badge">🏅 Proud Athlete</span>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="card">
+            <h2>💻 Technology & Coding</h2>
+            <p>Building websites, learning new tools, and creating digital projects.</p>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%;"></div>
+            </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="card">
+            <h2>✍️ Creative Writing</h2>
+            <p>Expressing ideas through poems, stories, and essays.</p>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%;"></div>
+            </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="card">
+            <h2>🎯 Other Skills</h2>
+            <p>Add more skills here — communication, leadership, problem solving, or anything else you're good at!</p>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 70%;"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

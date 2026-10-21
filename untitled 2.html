@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio | Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --dark: #0c1929;
+            --darker: #081525;
+            --card-bg: rgba(30, 64, 100, 0.35);
+            --card-bg-hover: rgba(56, 189, 248, 0.15);
+            --text-light: #e0f2fe;
+            --text-muted: #93c5fd;
+            --glass: rgba(15, 23, 42, 0.75);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark), #0f2744);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            padding-bottom: 90px;
+            overflow-x: hidden;
+        }
+
+        /* ===== PARTICLE BACKGROUND ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(56, 189, 248, 0.4);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== HEADER BANNER ===== */
+        .header-banner {
+            position: relative;
+            padding: 50px 20px 60px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top, rgba(56, 189, 248, 0.12), transparent 60%);
+            z-index: -1;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 400% 400%;
+            animation: ringRotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes ringRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-icon {
+            width: 96px;
+            height: 96px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--dark);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-wrapper:hover .profile-icon {
+            transform: scale(1.08);
+        }
+
+        .header-banner h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.3)); }
+            to { filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.5)); }
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            margin-top: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .typing-text {
+            display: inline-block;
+            border-right: 2px solid var(--primary);
+            padding-right: 5px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .intro-text {
+            max-width: 600px;
+            margin: 20px auto 35px;
+            padding: 0 25px;
+            text-align: center;
+            animation: fadeInUp 0.9s ease-out;
+        }
+
+        .intro-text p {
+            line-height: 1.8;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* ===== LINKS CONTAINER ===== */
+        .links-container {
+            max-width: 540px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-link-btn {
+            display: flex;
+            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            border-radius: 20px;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .page-link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .page-link-btn:hover::before {
+            left: 100%;
+        }
+
+        .page-link-btn:hover {
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(139, 92, 246, 0.08));
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(56, 189, 248, 0.35);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(56, 189, 248, 0.1) inset,
+                0 0 30px rgba(56, 189, 248, 0.08);
+        }
+
+        .btn-icon {
+            font-size: 28px;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.15));
+            border-radius: 14px;
+            margin-right: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .page-link-btn:hover .btn-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .btn-text {
+            flex: 1;
+        }
+
+        .btn-text h3 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .btn-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .arrow-wrapper {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .arrow-icon {
+            font-size: 16px;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .page-link-btn:hover .arrow-wrapper {
+            background: var(--primary);
+        }
+
+        .page-link-btn:hover .arrow-icon {
+            transform: translateX(4px);
+            color: white;
+        }
+
+        /* Animation delays */
+        .page-link-btn:nth-child(1) { animation-delay: 0.1s; }
+        .page-link-btn:nth-child(2) { animation-delay: 0.2s; }
+        .page-link-btn:nth-child(3) { animation-delay: 0.3s; }
+        .page-link-btn:nth-child(4) { animation-delay: 0.4s; }
+        .page-link-btn:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== BOTTOM NAVIGATION ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 10px 25px;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border-top: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #64748b;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .nav-item:hover::after, .nav-item.active::after {
+            width: 70%;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 999;
+            transition: width 0.1s ease;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            .profile-icon { width: 84px; height: 84px; }
+            .page-link-btn { padding: 18px 20px; }
+            .btn-icon { width: 46px; height: 46px; font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== PROGRESS BAR ===== -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ===== PARTICLES ===== -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ===== HEADER ===== -->
+    <div class="header-banner">
+        <div class="profile-wrapper">
+            <div class="profile-ring"></div>
+            <div class="profile-icon">
+                <img src="my.png" alt="Profile">
+            </div>
+        </div>
+        <h1>STUDENT PORTFOLIO</h1>
+        <p class="tagline"><span class="typing-text" id="typing">Creating • Learning • Growing</span></p>
+        <div class="intro-text">
+            <p>Welcome to my digital space! ✨ Here you'll find my works, projects, and reflections from my learning journey. Feel free to explore and thank you for visiting!</p>
+        </div>
+    </div>
+
+    <!-- ===== LINKS ===== -->
+    <div class="links-container">
+        
+        <a href="about.html" class="page-link-btn">
+            <span class="btn-icon"><i class="fas fa-user"></i></span>
+            <div class="btn-text">
+                <h3>About Me</h3>
+                <p>Who I am and my journey</p>
+            </div>
+            <span class="arrow-wrapper"><i class="fas fa-chevron-right arrow-icon"></i></span>
+        </a>
+
+        <a href="work.html" class="page-link-btn">
+            <span class="btn-icon"><i class="fas fa-book-open"></i></span>
+            <div class="btn-text">
+                <h3>My Works</h3>
+                <p>Poems, stories & essays</p>
+            </div>
+            <span class="arrow-wrapper"><i class="fas fa-chevron-right arrow-icon"></i></span>
+        </a>
+
+        <a href="skills.html" class="page-link-btn">
+            <span class="btn-icon"><i class="fas fa-folder-open"></i></span>
+            <div class="btn-text">
+                <h3>STUDENT Skills</h3>
+                <p>School outputs</p>
+            </div>
+            <span class="arrow-wrapper"><i class="fas fa-chevron-right arrow-icon"></i></span>
+        </a>
+
+        <a href="reflection.html" class="page-link-btn">
+            <span class="btn-icon"><i class="fas fa-lightbulb"></i></span>
+            <div class="btn-text">
+                <h3>My Reflection</h3>
+                <p>What I've learned</p>
+            </div>
+            <span class="arrow-wrapper"><i class="fas fa-chevron-right arrow-icon"></i></span>
+        </a>
+
+        <a href="contact.html" class="page-link-btn">
+            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+            <div class="btn-text">
+                <h3>Contact Me</h3>
+                <p>Let's connect</p>
+            </div>
+            <span class="arrow-wrapper"><i class="fas fa-chevron-right arrow-icon"></i></span>
+        </a>
+
+    </div>
+
+    <!-- ===== BOTTOM NAV ===== -->
+    <nav class="bottom-nav">
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user nav-icon"></i>
+            <span class="nav-label">About</span>
+        </a>
+        <a href="work.html" class="nav-item">
+            <i class="fas fa-book-open nav-icon"></i>
+            <span class="nav-label">Works</span>
+        </a>
+        <a href="skills.html" class="nav-item">
+            <i class="fas fa-folder-open nav-icon"></i>
+            <span class="nav-label">skills</span>
+        </a>
+        <a href="reflection.html" class="nav-item">
+            <i class="fas fa-lightbulb nav-icon"></i>
+            <span class="nav-label">Reflection</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-paper-plane nav-icon"></i>
+            <span class="nav-label">Contact</span>
+        </a>
+    </nav>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== PARTICLE GENERATION =====
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 40;
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(p);
+            }
+        }
+
+        // ===== SCROLL PROGRESS =====
+        function updateProgressBar() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // ===== TYPING EFFECT =====
+        const phrases = [
+            'Creating • Learning • Growing',
+            'Welcome to my portfolio ✨',
+            'Explore my works 📖',
+            'Dream big, learn more 🚀'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseTime = 2000;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            const el = document.getElementById('typing');
+            
+            if (isDeleting) {
+                el.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                el.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? deletingSpeed : typingSpeed;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                speed = pauseTime;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                speed = 500;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        // ===== INITIALIZE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            typeEffect();
+            window.addEventListener('scroll', updateProgressBar);
+        });
+    </script>
+    
+</body>
+</html>

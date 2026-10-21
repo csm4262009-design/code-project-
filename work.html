@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Works | Student Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #38bdf8;
+            --secondary: #8b5cf6;
+            --dark: #0c1929;
+            --darker: #081525;
+            --glass: rgba(15, 23, 42, 0.75);
+            --text-muted: #93c5fd;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark), #0f2744);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            padding-bottom: 90px;
+        }
+
+        .header-section {
+            text-align: center;
+            padding: 45px 20px 35px;
+            position: relative;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .back-link i {
+            margin-right: 6px;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            background: linear-gradient(135deg, #fff, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cards-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            gap: 20px;
+        }
+
+        .work-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardSlideUp 0.6s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        .work-card:nth-child(1) { animation-delay: 0.1s; }
+        .work-card:nth-child(2) { animation-delay: 0.2s; }
+        .work-card:nth-child(3) { animation-delay: 0.3s; }
+        .work-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes cardSlideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .work-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 30px rgba(56, 189, 248, 0.08);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-content h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+
+        .card-content p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card-arrow {
+            font-size: 18px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover .card-arrow {
+            transform: translateX(6px);
+            color: var(--primary);
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 10px 25px;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border-top: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #64748b;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <a href="index.html" class="back-link"><i class="fas fa-chevron-left"></i> Back to Home</a>
+        <h1>📚 My Works</h1>
+        <p class="subtitle">A collection of my writings and school outputs</p>
+    </div>
+
+    <div class="cards-container">
+        
+        <a href="poem.html" class="work-card">
+            <div class="card-icon"><i class="fas fa-pen-nib"></i></div>
+            <div class="card-content">
+                <h3>Poem</h3>
+                <p>Expressing thoughts and emotions through verse and rhythm.</p>
+            </div>
+            <i class="fas fa-chevron-right card-arrow"></i>
+        </a>
+
+        <a href="flash fiction.html" class="work-card">
+            <div class="card-icon"><i class="fas fa-book"></i></div>
+            <div class="card-content">
+                <h3>Flash Fiction</h3>
+                <p>A short, powerful story that captures a moment in time.</p>
+            </div>
+            <i class="fas fa-chevron-right card-arrow"></i>
+        </a>
+
+        <a href="essay1.html" class="work-card">
+            <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="card-content">
+                <h3>Essay — Part 1</h3>
+                <p>Reflections and insights on my learning journey.</p>
+            </div>
+            <i class="fas fa-chevron-right card-arrow"></i>
+        </a>
+
+        <a href="essay2.html" class="work-card">
+            <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+            <div class="card-content">
+                <h3>Essay — Part 2</h3>
+                <p>Further thoughts and deeper understanding.</p>
+            </div>
+            <i class="fas fa-chevron-right card-arrow"></i>
+        </a>
+
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="about.html" class="nav-item">
+            <i class="fas fa-user nav-icon"></i>
+            <span class="nav-label">About</span>
+        </a>
+        <a href="works.html" class="nav-item active">
+            <i class="fas fa-book-open nav-icon"></i>
+            <span class="nav-label">Works</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <i class="fas fa-folder-open nav-icon"></i>
+            <span class="nav-label">Projects</span>
+        </a>
+        <a href="reflection.html" class="nav-item">
+            <i class="fas fa-lightbulb nav-icon"></i>
+            <span class="nav-label">Reflection</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-paper-plane nav-icon"></i>
+            <span class="nav-label">Contact</span>
+        </a>
+    </nav>
+    
+</body>
+</html>

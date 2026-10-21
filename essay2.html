@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footprints of the Morning | Poem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        :root {
+            --warm-gold: #b8860b;
+            --sunset-orange: #8b4513;
+            --deep-brown: #2c1810;
+            --cream: #f8f2e4;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f8f2e4 0%, #e9d8b8 100%);
+            min-height: 100vh;
+            color: var(--deep-brown);
+            padding-bottom: 90px;
+        }
+
+        .header {
+            padding: 40px 25px 20px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--sunset-orange);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        .poem-header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .poem-title {
+            font-size: 1.8rem;
+            color: var(--deep-brown);
+            letter-spacing: 1px;
+        }
+
+        .poem-image-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 15px 40px;
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        .poem-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 242, 228, 0.95);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 10px 25px;
+            box-shadow: 0 -2px 20px rgba(139, 69, 19, 0.08);
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: rgba(44, 24, 16, 0.5);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active, .nav-item:hover {
+            color: var(--sunset-orange);
+            transform: translateY(-3px);
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            font-size: 0.65rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="work.html" class="back-btn"><i class="fas fa-chevron-left"></i> Back to Works</a>
+        
+        <div class="poem-header">
+            <h1 class="poem-title"> Tradition, Identity, and Belonging in Philippine Literature
+</h1>
+        </div>
+    </div>
+
+    <div class="poem-image-container">
+        <img src="ewan2.png" alt="Footprints of the Morning" class="poem-image">
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="untitled 2.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="work.html" class="nav-item active">
+            <i class="fas fa-book"></i>
+            <span>Works</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <i class="fas fa-folder"></i>
+            <span>Projects</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+</body>
+</html>
